@@ -28,7 +28,6 @@ a:visted {
   position: relative;
   width: calc(100% - 2em);
   z-index: 2;
-  filter: drop-shadow(0 0 5px black);
 }
 
 .card {
