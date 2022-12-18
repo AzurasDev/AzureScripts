@@ -2697,3 +2697,9 @@ body {
     transform: translate(62.31045vw, 100vh) scale(0.5286);
   }
 }
+
+h1 {
+  color: white;
+  font-size: 40px;
+  font: rubik;
+}
