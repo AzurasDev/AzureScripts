@@ -1,3 +1,410 @@
+.rubik-font {
+  font-family: "Rubik", sans-serif;
+  font-weight: 400;
+}
+
+@keyframes rumble {
+  0% {
+    transform: translate(1px, 1px) rotate(0deg);
+  }
+  10% {
+    transform: translate(-1px, -2px) rotate(-1deg);
+  }
+  20% {
+    transform: translate(-3px, 0px) rotate(1deg);
+  }
+  30% {
+    transform: translate(3px, 2px) rotate(0deg);
+  }
+  40% {
+    transform: translate(1px, -1px) rotate(1deg);
+  }
+  50% {
+    transform: translate(-1px, 2px) rotate(-1deg);
+  }
+  60% {
+    transform: translate(-3px, 1px) rotate(0deg);
+  }
+  70% {
+    transform: translate(3px, 1px) rotate(-1deg);
+  }
+  80% {
+    transform: translate(-1px, -1px) rotate(1deg);
+  }
+  90% {
+    transform: translate(1px, 2px) rotate(0deg);
+  }
+  100% {
+    transform: translate(1px, -2px) rotate(-1deg);
+  }
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(5%) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0%) scale(1);
+  }
+}
+@keyframes infinite-app-link {
+  from, 10% {
+    background-color: rgba(255, 255, 255, 0.05);
+  }
+  5% {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+}
+#infinite-app {
+  background-color: #1e1e1e;
+  height: 100vh;
+  width: 100vw;
+}
+
+#infinite-app > .window-effect {
+  height: 80vh;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 80vw;
+}
+
+#infinite-app > .window-effect i {
+  font-size: 1.25em;
+}
+
+#infinite-app #infinite-app-links {
+  display: flex;
+  gap: 5px;
+  margin: 5px;
+  position: absolute;
+  z-index: 100;
+}
+
+#infinite-app #infinite-app-links:not(:hover) a {
+  animation: infinite-app-link 10s ease-in-out infinite;
+}
+
+#infinite-app #infinite-app-links a {
+  backdrop-filter: blur(2px);
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 6px;
+  color: #fff;
+  font-size: 1.25em;
+  padding: 10px;
+  text-decoration: none;
+}
+
+#infinite-app #infinite-app-links a:nth-of-type(2) {
+  animation-delay: 500ms;
+}
+
+#infinite-app #infinite-app-links a:nth-of-type(3) {
+  animation-delay: 1000ms;
+}
+
+#infinite-app #infinite-app-links a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+#infinite-app #reset-mode-button {
+  backdrop-filter: blur(2px);
+  background-color: rgba(255, 255, 255, 0.03);
+  border: none;
+  border-radius: 6px;
+  bottom: 10px;
+  color: #fff;
+  cursor: pointer;
+  left: 10px;
+  padding: 10px;
+  position: fixed;
+  text-transform: uppercase;
+  user-select: none;
+  width: 100px;
+  z-index: 100;
+}
+
+#infinite-app #reset-mode-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+#context-menu {
+  position: absolute;
+  z-index: 2;
+}
+
+.context-menu-window {
+  animation: fade-in 250ms ease;
+  background-color: #141414;
+  border-radius: 10px;
+  box-shadow: rgba(10, 10, 10, 0.75) 0px 7px 29px 0px;
+  padding: 10px;
+  position: relative;
+}
+
+.context-menu-window.escalation-level-1 {
+  animation: rumble 500ms infinite;
+}
+
+.context-menu-section {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.context-menu-section:nth-of-type(n + 2) {
+  border-top: 1px solid #2d2d2d;
+  margin-top: 5px;
+  padding-top: 5px;
+}
+
+.context-menu-action {
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  gap: 10px;
+  outline: none;
+  padding: 10px;
+  position: relative;
+  width: 320px;
+  z-index: 1;
+}
+
+.context-menu-action:hover,
+.context-menu-action:focus {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.context-menu-action > i,
+.context-menu-action > .label {
+  color: #dcdcdc;
+  position: relative;
+  z-index: 2;
+}
+
+.context-menu-action > i {
+  font-size: 1.25em;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  width: 30px;
+}
+
+.context-menu-action > .label {
+  font-weight: 500;
+  height: 20px;
+  line-height: 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.context-menu-extension {
+  position: relative;
+}
+
+.context-menu-extension > .context-menu-window {
+  position: absolute;
+  z-index: 2;
+}
+
+.context-menu-extension i.fa-solid.fa-caret-right {
+  color: #dcdcdc;
+  pointer-events: none;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+@keyframes do-not-press {
+  from, to {
+    background-color: rgba(0, 0, 0, 0);
+  }
+  50% {
+    background-color: rgba(229, 57, 53, 0.15);
+  }
+}
+.do-not-press {
+  animation: do-not-press 3s ease-in-out infinite;
+}
+
+.special-effect {
+  height: 100%;
+  left: 0px;
+  overflow: hidden;
+  pointer-events: none;
+  position: absolute;
+  top: 0px;
+  width: 100%;
+}
+
+@keyframes sparkle-effect-animation {
+  from, to {
+    opacity: 0;
+    transform: scale(0.5) rotate(0deg);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1) rotate(135deg);
+  }
+}
+.sparkle-effect {
+  height: 100%;
+  left: 0px;
+  position: absolute;
+  top: 0px;
+  width: 100%;
+}
+
+.sparkle-effect i {
+  animation: sparkle-effect-animation ease-in-out;
+  font-size: 0.8em;
+  opacity: 0;
+  position: absolute;
+  transform: scale(0.5) rotate(0deg);
+}
+
+@keyframes wave-effect-level-0-animation {
+  from, to {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+@keyframes wave-effect-level-1-animation {
+  from, to {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+    transform: translateY(-20%);
+  }
+}
+@keyframes wave-effect-level-2-animation {
+  from, to {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+    transform: translateY(-20%) rotate(360deg);
+  }
+}
+@keyframes wave-effect-level-3-animation {
+  from, to {
+    opacity: 0;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.3;
+    transform: scale(2) translateX(25%);
+  }
+}
+.wave-effect {
+  height: 100%;
+  left: 0px;
+  position: absolute;
+  top: 0px;
+  width: 100%;
+}
+
+.wave-effect.escalation-level-0 i {
+  animation: wave-effect-level-0-animation ease-in-out infinite;
+}
+
+.wave-effect.escalation-level-1 i {
+  animation: wave-effect-level-1-animation ease-in-out infinite;
+}
+
+.wave-effect.escalation-level-2 i {
+  animation: wave-effect-level-2-animation ease-in-out infinite;
+}
+
+.wave-effect.escalation-level-3 i {
+  animation: wave-effect-level-3-animation ease-in-out infinite;
+}
+
+.wave-effect i {
+  font-size: 1.75em;
+  height: 40px;
+  line-height: 40px;
+  position: absolute;
+  text-align: center;
+  top: 5px;
+  width: 40px;
+}
+
+@keyframes window-effect-animation {
+  from, to {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+}
+.window-effect {
+  height: 100%;
+  left: 0px;
+  pointer-events: none;
+  position: absolute;
+  top: 0px;
+  width: 100%;
+}
+
+.window-effect i {
+  animation: window-effect-animation ease-in-out;
+  font-size: 0.8em;
+  opacity: 0;
+  position: absolute;
+}
+
+@media (max-width: 800px) {
+  .window-effect {
+    display: none;
+  }
+}
+#infinite-canvas {
+  cursor: none;
+  height: 100vh;
+  position: absolute;
+  width: 100vw;
+  z-index: 1;
+}
+
+@keyframes no-more-options-text {
+  from, 50% {
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+  }
+}
+#no-more-options-text {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: center;
+  text-align: center;
+  user-select: none;
+  width: 100vw;
+}
+
+#no-more-options-text span {
+  animation: no-more-options-text 8s ease-in-out infinite;
+  color: rgba(255, 255, 255, 0.15);
+  display: block;
+  font-size: 6vw;
+  opacity: 0;
+}
+
 :root {
   --card-color: rgb(25, 25, 25);
 }
