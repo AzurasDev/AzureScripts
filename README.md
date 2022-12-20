@@ -1,2 +1,0 @@
-# AzureScripts
-Hi1
