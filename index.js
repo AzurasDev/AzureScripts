@@ -7,7 +7,7 @@ const app = express();
 app.use('',express.static(path.join(__dirname, 'public')));
 
 app.get('/', (request, response) => {
-	return response.sendFile('sign-in.html', { root: '.' });
+	return response.sendFile('index.html', { root: '.' });
 });
 
 app.get('/auth/discord', (request, response) => {
